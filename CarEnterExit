@@ -67,7 +67,7 @@ public class CarEnterExitSystem : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.tag == “Player”)
+        if (col.gameObject.tag == "Player")
         {
             DriveUi.gameObject.SetActive(true);
             Candrive = true;
@@ -76,7 +76,7 @@ public class CarEnterExitSystem : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.tag == “Player”)
+        if (col.gameObject.tag == "Player")
         {
             DriveUi.gameObject.SetActive(false);
             Candrive = false;
