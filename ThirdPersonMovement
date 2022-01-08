@@ -3,9 +3,9 @@ public class Movement : MonoBehaviour
 {
     public CharacterController controller;
     public Animator animator;
-   
+
     public GameObject Weapon;
-   
+
     [Header("Movement")]
     public float speed = 2f;
     public float gravity = -9.18f;
@@ -24,12 +24,12 @@ public class Movement : MonoBehaviour
     bool isGrounded;
     void Start()
     {
-       
+
     }
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);  // For Check Player is Grounded Or Not
-       
+
         float x = Input.GetAxis("Horizontal");        //To Get Input from A and D Keys
         float z = Input.GetAxis("Vertical");         // To Get Input from W and S Keys
         animator.SetFloat("forward", z);          // Play Forward And Backward Walking Animation
@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && z > 0)
         {
             speed = 5f;
-            animator.SetBool("run", true);        
+            animator.SetBool("run", true);
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
@@ -69,7 +69,7 @@ public class Movement : MonoBehaviour
         {
             animator.SetBool("fall", true);
         }
-       
+
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
         // ——————————– Jump Ends ——————————–
@@ -77,13 +77,13 @@ public class Movement : MonoBehaviour
         RotateToCamView();
         //——————————————————————————–
     }
-   
+
     //———————- Rotate with Camera Start ————————————
     void RotateToCamView()
     {
         Vector3 camCenterPos = camCenter.position;
         Vector3 lookPoint = camCenterPos + (camCenter.forward * lookDIstance);
-        Vector3 direction = lookPoint – transform.position;
+        Vector3 direction = lookPoint - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         lookRotation.x = 0;
         lookRotation.z = 0;
